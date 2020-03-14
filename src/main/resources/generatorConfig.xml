@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--导入属性配置 -->
+    <!--<properties resource="generator.properties"></properties> -->
+
+    <!--指定特定数据库的jdbc驱动jar包的位置 -->
+<!--    <context id="default" targetRuntime="MyBatis3">-->
+    <context id="default" targetRuntime="com.qianchang.generatorconfig.plugin.TkMyBatis3Impl">
+        <!-- 自定义方法 -->
+        <plugin type="com.qianchang.generatorconfig.plugin.BasePlugin" />
+        <!--避免生成重复代码的插件-->
+        <!--<plugin type="com.qianchang.generatorconfig.plugin.OverIsMergeablePlugin"/>-->
+
+        <!-- optional，旨在创建class时，对注释进行控制 -->
+        <commentGenerator type="com.qianchang.generatorconfig.testHuTool.MyCommentGenerator">
+            <!-- <property name="suppressDate" value="true" />
+            <property name="suppressAllComments" value="true" /> -->
+        </commentGenerator>
+
+        <!--jdbc的数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://test.blackview4g.com:3306/community" userId="dev"
+                        password="6eAQS9QeA8D5ERnM">
+        </jdbcConnection>
+
+
+        <!-- 非必需，类型处理器，在数据库类型和java类型之间的转换控制 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+
+        <!-- Model模型生成器,用来生成含有主键key的类，记录类 以及查询Example类 targetPackage 指定生成的model生成所在的包名
+        targetProject 指定在该项目下所在的路径 -->
+        <javaModelGenerator targetPackage="cn.com.blackview.communityservice.domain"
+                            targetProject="src/main/java">
+
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 是否对model添加 构造函数 -->
+            <property name="constructorBased" value="false" />
+            <!-- 是否对类CHAR类型的列的数据进行trim操作 -->
+            <property name="trimStrings" value="true" />
+            <!-- 建立的Model对象是否 不可改变 即生成的Model对象不会有 setter方法，只有构造方法 -->
+            <property name="immutable" value="false" />
+        </javaModelGenerator>
+
+        <!--Mapper映射文件生成所在的目录 为每一个数据库的表生成对应的SqlMap文件 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码 type="ANNOTATEDMAPPER",生成Java Model
+        和基于注解的Mapper对象 type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象 type="XMLMAPPER",生成SQLMap
+        XML文件和独立的Mapper接口 -->
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.com.blackview.communityservice.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--==================================================================-->
+        <!--==================================================================-->
+        <!--================= 这下面需要 自己手动编写 表和类名 =====================-->
+        <!--==================================================================-->
+        <!--==================================================================-->
+
+        <!--生成对应表及类名-->
+        <table tableName="marquee" mapperName="{0}Dao" domainObjectName="Marquee" enableCountByExample="false"
+               enableUpdateByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="product"  mapperName="{0}Dao" domainObjectName="Product" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="tag"  mapperName="{0}Dao" domainObjectName="Tag" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="topic"  mapperName="{0}Dao" domainObjectName="Topic" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="topic_statistics"  mapperName="{0}Dao" domainObjectName="TopicStatistics" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="browse"  mapperName="{0}Dao" domainObjectName="Browse" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="liked" mapperName="{0}Dao"  domainObjectName="Liked" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="comment" mapperName="{0}Dao"  domainObjectName="Comment" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="follow"  mapperName="{0}Dao" domainObjectName="Follow" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="favorite"  mapperName="{0}Dao" domainObjectName="Favorite" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="report"  mapperName="{0}Dao" domainObjectName="Report" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="share"  mapperName="{0}Dao" domainObjectName="Share" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+        <table tableName="category"  mapperName="{0}Dao" domainObjectName="Category" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="topic_tag"  mapperName="{0}Dao" domainObjectName="TopicTag" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="user" mapperName="{0}Dao"  domainObjectName="User" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+        <table tableName="user_statistics"  mapperName="{0}Dao" domainObjectName="UserStatistics" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <property name="my.isgen.usekeys" value="true"/>
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
